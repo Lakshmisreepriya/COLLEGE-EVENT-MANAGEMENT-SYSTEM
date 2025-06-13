@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System - Login</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <form class="auth-form" action="login.php" method="POST">
+            <h2>Event Management System</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                📅 Manage Events & Polls
+            </p>
+            
+            <div id="error-message" style="display: none;" class="alert alert-error"></div>
+            
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-full">Login</button>
+            
+            <p style="text-align: center; margin-top: 20px;">
+                Don't have an account? <a href="signup.html">Sign up here</a><br>
+                <a href="system_status.php">System Status</a>
+            </p>
+            
+            <div style="margin-top: 20px; padding: 15px; background-color: #e7f3ff; border-radius: 5px; font-size: 14px;">
+                <strong>🔑 Default Credentials:</strong><br>
+                <strong>Admin:</strong> <code>admin</code> / <code>admin123</code><br>
+                <strong>Student:</strong> <code>student1</code> / <code>student123</code>
+            </div>
+            
+            <div style="margin-top: 15px; padding: 15px; background-color: #f0f8f0; border-radius: 5px; font-size: 13px;">
+                <strong>💡 Note:</strong> This system uses JSON files for data storage - no database required!
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Check for error parameter in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = decodeURIComponent(error);
+            errorDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
